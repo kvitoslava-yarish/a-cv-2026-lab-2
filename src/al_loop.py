@@ -11,7 +11,7 @@ from .data import find_voc_root, load_masks, load_splits, rows_of
 from .oracle import Oracle
 from .selection import SELECTORS, SelectionState, check_batch, maxherding
 from .selection.herding import median_sigma
-from .tracking import append_result, define_prefix, init_run, save_head
+from .tracking import append_result, define_prefix, init_run, iou_bar, per_class, save_head
 from .train import evaluate, gpu_info, train_head
 
 
@@ -88,6 +88,8 @@ def run_al(cfg):
             "al/dev_miou": dev["miou"], "al/dev_ece": dev["ece"], "al/n_objects": n_obj, "al/boundary_len": boundary,
             "al/select_time_s": select_time, "al/train_time_s": train_time,
         }
+        log.update(per_class("al/val_iou", val["per_class_iou"]))
+        log[f"plots/val_iou_r{r}"] = iou_bar(val["per_class_iou"], f"{name} r{r} (n={len(labeled)}): val IoU per class")
         if "gains" in info:
             log["al/total_gain"] = sum(info["gains"])
             log["al/gain_per_pick"] = wandb.Histogram(info["gains"])

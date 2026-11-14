@@ -6,6 +6,8 @@ from pathlib import Path
 import torch
 import wandb
 
+from .data import VOC_CLASSES
+
 COLUMNS = [
     "encoder", "method", "scorer", "round", "n_labeled", "miou", "dev_miou", "ece", "per_class_iou",
     "n_objects_selected", "boundary_len_selected", "select_time_s", "train_time_s", "sigma", "tau", "seed",
@@ -59,3 +61,12 @@ def save_head(cfg, run, head, name):
         art.add_file(str(path))
         run.log_artifact(art)
     return path
+
+
+def per_class(prefix, ious):
+    return {f"{prefix}/{c}": v for c, v in zip(VOC_CLASSES, ious) if not math.isnan(v)}
+
+
+def iou_bar(ious, title):
+    rows = [[c, v] for c, v in zip(VOC_CLASSES, ious) if not math.isnan(v)]
+    return wandb.plot.bar(wandb.Table(data=rows, columns=["class", "iou"]), "class", "iou", title=title)

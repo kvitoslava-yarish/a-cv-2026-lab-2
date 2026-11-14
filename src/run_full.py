@@ -3,7 +3,7 @@ import numpy as np
 from .al_loop import load_cached
 from .config import load_config
 from .data import find_voc_root, load_masks, load_splits
-from .tracking import append_result, define_prefix, init_run, save_head
+from .tracking import append_result, define_prefix, init_run, iou_bar, per_class, save_head
 from .train import evaluate, gpu_info, train_head
 
 
@@ -32,7 +32,9 @@ def main():
         "gpu": gpu, "peak_mem_mb": round(peak, 1),
     })
     run.summary.update({"val_miou": val["miou"], "val_ece": val["ece"], "train_time_s": train_time,
-                        "gpu_hours": train_time / 3600, "gpu": gpu, "peak_mem_mb": peak})
+                        "gpu_hours": train_time / 3600, "gpu": gpu, "peak_mem_mb": peak,
+                        **per_class("val_iou", val["per_class_iou"])})
+    run.log({"plots/val_iou": iou_bar(val["per_class_iou"], f"{name}: val IoU per class")})
     print(f"[full] {name}: val_miou={val['miou']:.4f} ece={val['ece']:.4f} time={train_time:.1f}s gpu={gpu}")
     run.finish()
 
