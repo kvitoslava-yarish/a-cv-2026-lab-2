@@ -1,0 +1,47 @@
+encoder: dinov3
+seed: 0
+voc_root: null
+cache_dir: /tmp/al_cache
+out_dir: outputs
+img_size: 448
+num_classes: 21
+dev_size: 200
+dev_min_images_per_class: 5
+limit_train: null
+limit_val: null
+
+encoders:
+  dinov3: {source: hf, name: facebook/dinov3-vitb16-pretrain-lvd1689m, layers: [6, 12]}
+  mae: {source: timm, name: vit_base_patch16_224.mae, layers: [6, 9]}
+
+extract:
+  batch_size: 16
+  num_workers: 4
+
+train:
+  max_steps: 1000
+  batch_size: 8
+  lr: 1.0e-3
+  weight_decay: 1.0e-4
+  warmup_steps: 50
+  hidden: 256
+  dropout: 0.1
+  precision: 16-mixed
+  curve_every: 200
+  hist_every: 200
+  eval_batch_size: 16
+
+al:
+  method: maxherding
+  scorer: ripu
+  budgets: [21, 21, 42, 84, 168, 336]
+  top_frac: 0.1
+  score_size: 112
+  ripu_window: 3
+  bald_heads: 5
+
+wandb:
+  project: al-seg-voc
+  entity: null
+  mode: online
+  log_artifacts: true

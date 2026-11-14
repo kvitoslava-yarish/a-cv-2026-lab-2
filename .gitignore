@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+wandb/
+lightning_logs/
+outputs/heads/
+.pytest_cache/
