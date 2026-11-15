@@ -39,6 +39,9 @@ al:
   score_size: 112
   ripu_window: 3
   bald_heads: 5
+  sigma_scale: 1.0          # MaxHerding sigma = median heuristic x this factor (ablation only)
+  probcover_k: 21          # k-means clusters for ProbCover pseudo-labels (= number of classes)
+  probcover_alpha: 0.95    # ProbCover: largest delta with ball purity >= alpha
 
 wandb:
   project: al-seg-voc

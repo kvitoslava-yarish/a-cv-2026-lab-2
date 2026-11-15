@@ -9,9 +9,10 @@ from .analysis import class_distribution, thumbnail_grid
 from .config import load_config
 from .data import find_voc_root, load_masks, load_splits, rows_of
 from .oracle import Oracle
-from .selection import SELECTORS, SelectionState, check_batch, maxherding
-from .selection.herding import median_sigma
-from .tracking import append_result, define_prefix, init_run, iou_bar, per_class, save_head
+from .selection import MODEL_FREE, SELECTORS, SelectionState, check_batch, device, maxherding
+from .selection.herding import kernel_coverage, median_sigma
+from .selection.probcover import choose_delta, coverage
+from .tracking import append_csv, append_result, define_prefix, init_run, iou_bar, per_class, save_head
 from .train import evaluate, gpu_info, train_head
 
 
@@ -28,7 +29,9 @@ def load_cached(cfg):
 def run_al(cfg):
     al, enc, seed = cfg["al"], cfg["encoder"], cfg["seed"]
     method = al["method"]
-    tag = f"{method}-{al['scorer']}" if method == "uncertainty" else method
+    scale = al.get("sigma_scale", 1.0)
+    variant = method if scale == 1 else f"{method}-sx{scale:g}"  # sigma ablation: median sigma times a factor
+    tag = f"{method}-{al['scorer']}" if method == "uncertainty" else variant
     name = f"{tag}-{enc}-s{seed}"
     out = Path(cfg["out_dir"])
     root = find_voc_root(cfg)
@@ -42,17 +45,21 @@ def run_al(cfg):
     val_masks = load_masks(root, splits["val"])
     oracle = Oracle(pool_ids, data["masks448"][pool_rows], root)
 
-    sigma = median_sigma(data["vec"])
-    print(f"[al] {name}: pool={len(pool_ids)} sigma={sigma:.4f}")
+    base_sigma = median_sigma(data["vec"])
+    sigma = base_sigma * scale
+    # label-free reference radius: ProbCover selects with it, every method reports P(C(L, delta)) with it
+    delta, _ = choose_delta(data["vec"], al["probcover_k"], al["probcover_alpha"], seed)
+    print(f"[al] {name}: pool={len(pool_ids)} sigma={sigma:.4f} delta={delta:.4f}")
     run = init_run(cfg, name, group=tag)
-    run.summary["sigma"] = sigma
-    state = SelectionState(cfg=cfg, seed=seed, x=data["vec"], sigma=sigma, feats=data["train"], pool_rows=pool_rows)
+    run.summary.update({"sigma": sigma, "delta": delta})
+    state = SelectionState(cfg=cfg, seed=seed, x=data["vec"], sigma=sigma, feats=data["train"], pool_rows=pool_rows,
+                           delta=delta)
 
     labeled, masks, selections = [], [], []
     for r, B in enumerate(al["budgets"]):
         candidates = np.setdiff1d(np.arange(len(pool_ids)), labeled)
         t0 = time.time()
-        selector = maxherding if r == 0 else SELECTORS[method]
+        selector = SELECTORS[method] if r > 0 or method in MODEL_FREE else maxherding
         batch, info = selector(state, labeled, candidates, B)
         select_time = time.time() - t0
         check_batch(batch, labeled, B)
@@ -61,7 +68,7 @@ def run_al(cfg):
         labeled += batch
         selections.append(batch_ids)
         state.labeled_masks = np.concatenate(masks)
-        if r == 0:
+        if r == 0 and selector is maxherding and scale == 1:  # the shared fallback batch of model-based methods
             (out / f"cold_start_{enc}.json").write_text(json.dumps(batch_ids))
 
         prefix = f"r{r}/"
@@ -76,7 +83,7 @@ def run_al(cfg):
         save_head(cfg, run, head, f"head-{name}-r{r}")
 
         row = {
-            "encoder": enc, "method": method, "scorer": al["scorer"] if method == "uncertainty" else "",
+            "encoder": enc, "method": variant, "scorer": al["scorer"] if method == "uncertainty" else "",
             "round": r, "n_labeled": len(labeled), "miou": val["miou"], "dev_miou": dev["miou"], "ece": val["ece"],
             "per_class_iou": val["per_class_iou"], "n_objects_selected": n_obj, "boundary_len_selected": boundary,
             "select_time_s": round(select_time, 2), "train_time_s": round(train_time, 1), "sigma": sigma,
@@ -90,9 +97,19 @@ def run_al(cfg):
         }
         log.update(per_class("al/val_iou", val["per_class_iou"]))
         log[f"plots/val_iou_r{r}"] = iou_bar(val["per_class_iou"], f"{name} r{r} (n={len(labeled)}): val IoU per class")
-        if "gains" in info:
+        if info.get("gains"):
             log["al/total_gain"] = sum(info["gains"])
             log["al/gain_per_pick"] = wandb.Histogram(info["gains"])
+        # coverage of the pool by L, label-free, same sigma / delta for every method (kept out of results.csv so its
+        # columns stay fixed); n_greedy < B means ProbCover ran out of uncovered points and filled the batch randomly
+        cov = {"kernel_coverage": kernel_coverage(state.x, labeled, base_sigma, device()),
+               "ball_coverage": coverage(state.x, labeled, delta, device())}
+        log.update({f"al/{k}": v for k, v in cov.items()})
+        append_csv(out / "selector_stats.csv", {
+            "encoder": enc, "method": variant, "scorer": row["scorer"], "seed": seed, "round": r,
+            "n_labeled": len(labeled), **cov, "sigma": base_sigma, "delta": delta,
+            "n_greedy": len(info["gains"]) if "gains" in info else "", "total_gain": sum(info.get("gains", [])),
+        })
         if "scores" in info:
             log["al/candidate_scores"] = wandb.Histogram(info["scores"])
         run.log(log)

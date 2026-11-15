@@ -6,3 +6,5 @@ pyyaml
 pytest
 matplotlib
 pillow
+scikit-learn
+pandas

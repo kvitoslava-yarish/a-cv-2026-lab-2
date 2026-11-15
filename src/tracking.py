@@ -1,6 +1,7 @@
 import csv
 import json
 import math
+import os
 from pathlib import Path
 
 import torch
@@ -40,7 +41,8 @@ def append_result(cfg, row):
 
 def init_run(cfg, name, group):
     w = cfg["wandb"]
-    run = wandb.init(project=w["project"], entity=w["entity"], mode=w["mode"], name=name, group=group,
+    mode = os.environ.get("WANDB_MODE", w["mode"])  # the Kaggle kernel sets offline when it has no W&B key
+    run = wandb.init(project=w["project"], entity=w["entity"], mode=mode, name=name, group=group,
                      config=cfg, reinit="finish_previous")
     run.define_metric("trainer/global_step")
     run.define_metric("al/n_labeled")

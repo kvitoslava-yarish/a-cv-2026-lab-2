@@ -4,3 +4,4 @@ wandb/
 lightning_logs/
 outputs/heads/
 .pytest_cache/
+build/

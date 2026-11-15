@@ -46,3 +46,11 @@ def select_maxherding(x, labeled_idx, candidate_idx, B, sigma, device=None):
     K, m = herding_inputs(x, labeled_idx, candidate_idx, sigma, device)
     picks, gains = herding_core(K, m, B)
     return [int(candidate_idx[p]) for p in picks], gains
+
+
+def kernel_coverage(x, labeled_idx, sigma, device=None):
+    """Generalized coverage (MaxHerding objective / N): mean over the pool of max_{s in L} k(x_i, s)."""
+    if not len(labeled_idx):
+        return 0.0
+    x = torch.as_tensor(x, dtype=torch.float32, device=device)
+    return float(gaussian_kernel(x, x[list(labeled_idx)], sigma).max(1).values.mean())
