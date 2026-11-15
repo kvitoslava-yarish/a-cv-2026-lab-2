@@ -3,8 +3,8 @@
 #   bash kaggle/push.sh "bash scripts/part3.sh"
 #   bash kaggle/push.sh "ABLATION=0 bash scripts/part3.sh" "python -m src.report"
 # Update the code bundle first (kaggle/bundle.sh). When the kernel has finished:
-#   uvx kaggle kernels status <user>/al-seg-voc
-#   uvx kaggle kernels output <user>/al-seg-voc -p build/kaggle_out
+#   uvx --with six kaggle kernels status <user>/al-seg-voc
+#   uvx --with six kaggle kernels output <user>/al-seg-voc -p build/kaggle_out
 set -euo pipefail
 cd "$(dirname "$0")/.."
 USER=$(python3 -c "import json,os; print(json.load(open(os.path.expanduser('~/.kaggle/kaggle.json')))['username'])")
@@ -22,4 +22,4 @@ cat > "$OUT/kernel-metadata.json" <<JSON
  "kernel_type": "script", "is_private": true, "enable_gpu": true, "enable_internet": true,
  "dataset_sources": ["$USER/al-seg-voc-bundle", "gopalbhattrai/pascal-voc-2012-dataset"]}
 JSON
-uvx kaggle kernels push -p "$OUT" --accelerator NvidiaTeslaT4
+uvx --with six kaggle kernels push -p "$OUT" --accelerator NvidiaTeslaT4

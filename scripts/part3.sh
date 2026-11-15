@@ -1,13 +1,14 @@
 #!/usr/bin/env bash
 # Part 3: coverage-based AL (21 -> 672): MaxHerding, ProbCover (bonus), MaxHerding sigma ablation; 2 encoders.
-# Skip the ablation with ABLATION=0.
+# Skip the ablation with ABLATION=0; pick encoders with ENCODERS="mae" (default: dinov3 mae).
 set -euo pipefail
 cd "$(dirname "$0")/.."
 CACHE_DIR=${CACHE_DIR:-/tmp/al_cache}
 ABLATION=${ABLATION:-1}
+ENCODERS=${ENCODERS:-dinov3 mae}
 
 python -m pytest -q tests/test_herding.py tests/test_probcover.py
-for enc in dinov3 mae; do
+for enc in $ENCODERS; do
   python -m src.features encoder=$enc cache_dir=$CACHE_DIR "$@"
   python -m src.al_loop --config configs/maxherding.yaml encoder=$enc cache_dir=$CACHE_DIR "$@"
   python -m src.al_loop --config configs/probcover.yaml encoder=$enc cache_dir=$CACHE_DIR "$@"

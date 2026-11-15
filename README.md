@@ -61,11 +61,11 @@ Same as assignment 1: the local working tree is uploaded as a private dataset an
 no GitHub push needed. Needs `~/.kaggle/kaggle.json`. Attach the `HF_TOKEN` (and optionally `WANDB_API_KEY`) secret
 to the `al-seg-voc` kernel once in the Kaggle editor (Add-ons -> Secrets); without a W&B key it logs offline.
 ```
-bash kaggle/bundle.sh && uvx kaggle datasets create -p build/kaggle_bundle --dir-mode zip     # first time
-bash kaggle/bundle.sh && uvx kaggle datasets version -p build/kaggle_bundle -m update --dir-mode zip
+bash kaggle/bundle.sh && uvx --with six kaggle datasets create -p build/kaggle_bundle --dir-mode zip     # first time
+bash kaggle/bundle.sh && uvx --with six kaggle datasets version -p build/kaggle_bundle -m update --dir-mode zip
 bash kaggle/push.sh "bash scripts/part3.sh" "python -m src.report"
-uvx kaggle kernels status <user>/al-seg-voc
-uvx kaggle kernels output <user>/al-seg-voc -p build/kaggle_out
+uvx --with six kaggle kernels status <user>/al-seg-voc
+uvx --with six kaggle kernels output <user>/al-seg-voc -p build/kaggle_out
 ```
 `selector_stats.csv` also holds two label-free coverage metrics for every method, with the same median sigma and
 ProbCover delta for all: generalized (Gaussian) coverage and P(C(L, delta)).

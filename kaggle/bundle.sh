@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # Build build/kaggle_bundle/: the local code (committed or not), uploaded as one private Kaggle dataset, so the GPU
 # kernel runs exactly this working tree without pushing to GitHub.
-#   bash kaggle/bundle.sh && uvx kaggle datasets create -p build/kaggle_bundle --dir-mode zip            (first time)
-#   bash kaggle/bundle.sh && uvx kaggle datasets version -p build/kaggle_bundle -m "update" --dir-mode zip
+#   bash kaggle/bundle.sh && uvx --with six kaggle datasets create -p build/kaggle_bundle --dir-mode zip            (first time)
+#   bash kaggle/bundle.sh && uvx --with six kaggle datasets version -p build/kaggle_bundle -m "update" --dir-mode zip
 set -euo pipefail
 cd "$(dirname "$0")/.."
 OUT=build/kaggle_bundle
