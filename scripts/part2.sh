@@ -3,8 +3,9 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."
 CACHE_DIR=${CACHE_DIR:-/tmp/al_cache}
+ENCODERS=${ENCODERS:-dinov3 mae}  # e.g. ENCODERS=mae
 
-for enc in dinov3 mae; do
+for enc in $ENCODERS; do
   python -m src.features encoder=$enc cache_dir=$CACHE_DIR "$@"
   for scorer in ripu bald; do
     python -m src.al_loop --config configs/uncertainty.yaml encoder=$enc al.scorer=$scorer cache_dir=$CACHE_DIR "$@"

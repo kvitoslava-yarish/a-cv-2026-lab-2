@@ -64,6 +64,7 @@ to the `al-seg-voc` kernel once in the Kaggle editor (Add-ons -> Secrets); witho
 bash kaggle/bundle.sh && uvx --with six kaggle datasets create -p build/kaggle_bundle --dir-mode zip     # first time
 bash kaggle/bundle.sh && uvx --with six kaggle datasets version -p build/kaggle_bundle -m update --dir-mode zip
 bash kaggle/push.sh "bash scripts/part3.sh" "python -m src.report"
+KERNEL=al-seg-voc-baselines bash kaggle/push.sh "ENCODERS=mae bash scripts/part1.sh"   # 2nd kernel in parallel
 uvx --with six kaggle kernels status <user>/al-seg-voc
 uvx --with six kaggle kernels output <user>/al-seg-voc -p build/kaggle_out
 ```
