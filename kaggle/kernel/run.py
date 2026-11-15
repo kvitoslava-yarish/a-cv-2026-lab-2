@@ -21,8 +21,9 @@ def find_bundle():
     """Located by content: input layouts differ. os.walk with followlinks, because inputs are mounted via symlinks
     and Path.rglob stopped following them in Python 3.13."""
     for dirpath, _, files in os.walk(INPUT, followlinks=True):
-        if "al_loop.py" in files and Path(dirpath).match("repo/src"):
-            return Path(dirpath).parents[1]
+        root = Path(dirpath).parent  # Kaggle unpacks repo.zip either into repo/ or straight into the dataset root
+        if "al_loop.py" in files and Path(dirpath).name == "src" and (root / "requirements.txt").exists():
+            return root
     for dirpath, dirs, files in os.walk(INPUT, followlinks=True):  # diagnostics for the log
         if dirpath.count(os.sep) - str(INPUT).count(os.sep) < 4:
             print(dirpath, sorted(dirs)[:10], sorted(files)[:10])
@@ -31,7 +32,8 @@ def find_bundle():
 
 BUNDLE = find_bundle()
 REPO = Path("/kaggle/working/repo")
-shutil.copytree(BUNDLE / "repo", REPO, dirs_exist_ok=True)
+print(f"[kaggle] code bundle: {BUNDLE}", flush=True)
+shutil.copytree(BUNDLE, REPO, dirs_exist_ok=True)
 
 subprocess.run([sys.executable, "-m", "pip", "install", "-q", "-r", str(REPO / "requirements.txt")], check=True)
 env = dict(os.environ)
