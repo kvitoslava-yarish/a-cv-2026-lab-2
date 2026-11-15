@@ -19,7 +19,7 @@ KEYS = ["encoder", "label", "n_labeled"]
 
 
 def label_of(df):
-    scorer = df["scorer"].fillna("").astype(str)
+    scorer = df["scorer"].astype("string").fillna("")
     return np.where(scorer != "", df["method"].astype(str) + "-" + scorer, df["method"].astype(str))
 
 

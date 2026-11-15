@@ -1,0 +1,421 @@
+[{"stream_name":"stdout","time":1.170780275,"data":"[kaggle] code bundle: /kaggle/input/al-seg-voc-bundle\n"}
+,{"stream_name":"stdout","time":10.734928437,"data":"[kaggle] attached HF weights: {'dinov3_vit': '/kaggle/input/dinov3-vitb16-weights'}\n"}
+,{"stream_name":"stdout","time":11.741971021,"data":"secret HF_TOKEN not attached: Connection error trying to communicate with service.\n"}
+,{"stream_name":"stdout","time":12.618113799,"data":"secret WANDB_API_KEY not attached: Connection error trying to communicate with service.\n"}
+,{"stream_name":"stdout","time":12.653081835,"data":"Sun Nov 15 01:48:54 2026       \n"}
+,{"stream_name":"stdout","time":12.653110741,"data":"+-----------------------------------------------------------------------------------------+\n"}
+,{"stream_name":"stdout","time":12.653114754,"data":"| NVIDIA-SMI 580.178.04             Driver Version: 580.178.04     CUDA Version: 13.0     |\n"}
+,{"stream_name":"stdout","time":12.65311788,"data":"+-----------------------------------------+------------------------+----------------------+\n"}
+,{"stream_name":"stdout","time":12.653120845,"data":"| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |\n"}
+,{"stream_name":"stdout","time":12.653123871,"data":"| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |\n"}
+,{"stream_name":"stdout","time":12.653126664,"data":"|                                         |                        |               MIG M. |\n"}
+,{"stream_name":"stdout","time":12.653129519,"data":"|=========================================+========================+======================|\n"}
+,{"stream_name":"stdout","time":12.684215579,"data":"|   0  Tesla T4                       Off |   00000000:00:04.0 Off |                    0 |\n"}
+,{"stream_name":"stdout","time":12.684235943000001,"data":"| N/A   43C    P8              9W /   70W |       0MiB /  15360MiB |      0%      Default |\n"}
+,{"stream_name":"stdout","time":12.684241248,"data":"|                                         |                        |                  N/A |\n"}
+,{"stream_name":"stdout","time":12.684245914,"data":"+-----------------------------------------+------------------------+----------------------+\n"}
+,{"stream_name":"stdout","time":12.684250519,"data":"|   1  Tesla T4                       Off |   00000000:00:05.0 Off |                    0 |\n"}
+,{"stream_name":"stdout","time":12.684255133,"data":"| N/A   43C    P8             10W /   70W |       0MiB /  15360MiB |      0%      Default |\n"}
+,{"stream_name":"stdout","time":12.684266244,"data":"|                                         |                        |                  N/A |\n"}
+,{"stream_name":"stdout","time":12.684270254,"data":"+-----------------------------------------+------------------------+----------------------+\n"}
+,{"stream_name":"stdout","time":12.685014572,"data":"\n"}
+,{"stream_name":"stdout","time":12.685032839,"data":"+-----------------------------------------------------------------------------------------+\n"}
+,{"stream_name":"stdout","time":12.685037943,"data":"| Processes:                                                                              |\n"}
+,{"stream_name":"stdout","time":12.685042449,"data":"|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |\n"}
+,{"stream_name":"stdout","time":12.685046933,"data":"|        ID   ID                                                               Usage      |\n"}
+,{"stream_name":"stdout","time":12.685051588,"data":"|=========================================================================================|\n"}
+,{"stream_name":"stdout","time":12.686569418,"data":"|  No running processes found                                                             |\n"}
+,{"stream_name":"stdout","time":12.686598262,"data":"+-----------------------------------------------------------------------------------------+\n"}
+,{"stream_name":"stdout","time":46.989901471,"data":"..............                                                           [100%]\n"}
+,{"stream_name":"stdout","time":46.989941701,"data":"=============================== warnings summary ===============================\n"}
+,{"stream_name":"stdout","time":46.989948397,"data":"../../../usr/local/lib/python3.13/dist-packages/matplotlib/_fontconfig_pattern.py:64\n"}
+,{"stream_name":"stdout","time":46.98995326,"data":"  /usr/local/lib/python3.13/dist-packages/matplotlib/_fontconfig_pattern.py:64: PyparsingDeprecationWarning: 'oneOf' deprecated - use 'one_of'\n"}
+,{"stream_name":"stdout","time":46.989962191000004,"data":"    prop = Group((name + Suppress(\"=\") + comma_separated(value)) | oneOf(_CONSTANTS))\n"}
+,{"stream_name":"stdout","time":46.989965533,"data":"\n"}
+,{"stream_name":"stdout","time":46.989968711,"data":"../../../usr/local/lib/python3.13/dist-packages/matplotlib/_fontconfig_pattern.py:85\n"}
+,{"stream_name":"stdout","time":46.989971873,"data":"../../../usr/local/lib/python3.13/dist-packages/matplotlib/_fontconfig_pattern.py:85\n"}
+,{"stream_name":"stdout","time":46.989974889,"data":"../../../usr/local/lib/python3.13/dist-packages/matplotlib/_fontconfig_pattern.py:85\n"}
+,{"stream_name":"stdout","time":46.989977842,"data":"../../../usr/local/lib/python3.13/dist-packages/matplotlib/_fontconfig_pattern.py:85\n"}
+,{"stream_name":"stdout","time":46.989980797,"data":"../../../usr/local/lib/python3.13/dist-packages/matplotlib/_fontconfig_pattern.py:85\n"}
+,{"stream_name":"stdout","time":46.989983893,"data":"../../../usr/local/lib/python3.13/dist-packages/matplotlib/_fontconfig_pattern.py:85\n"}
+,{"stream_name":"stdout","time":46.989986871,"data":"  /usr/local/lib/python3.13/dist-packages/matplotlib/_fontconfig_pattern.py:85: PyparsingDeprecationWarning: 'parseString' deprecated - use 'parse_string'\n"}
+,{"stream_name":"stdout","time":46.989990041,"data":"    parse = parser.parseString(pattern)\n"}
+,{"stream_name":"stdout","time":46.989992971,"data":"\n"}
+,{"stream_name":"stdout","time":46.989995839,"data":"../../../usr/local/lib/python3.13/dist-packages/matplotlib/_fontconfig_pattern.py:89\n"}
+,{"stream_name":"stdout","time":46.990000575,"data":"../../../usr/local/lib/python3.13/dist-packages/matplotlib/_fontconfig_pattern.py:89\n"}
+,{"stream_name":"stdout","time":46.990017537,"data":"../../../usr/local/lib/python3.13/dist-packages/matplotlib/_fontconfig_pattern.py:89\n"}
+,{"stream_name":"stdout","time":46.990022913,"data":"../../../usr/local/lib/python3.13/dist-packages/matplotlib/_fontconfig_pattern.py:89\n"}
+,{"stream_name":"stdout","time":46.990028155,"data":"../../../usr/local/lib/python3.13/dist-packages/matplotlib/_fontconfig_pattern.py:89\n"}
+,{"stream_name":"stdout","time":46.990033432,"data":"../../../usr/local/lib/python3.13/dist-packages/matplotlib/_fontconfig_pattern.py:89\n"}
+,{"stream_name":"stdout","time":46.9900383,"data":"  /usr/local/lib/python3.13/dist-packages/matplotlib/_fontconfig_pattern.py:89: PyparsingDeprecationWarning: 'resetCache' deprecated - use 'reset_cache'\n"}
+,{"stream_name":"stdout","time":46.990043194,"data":"    parser.resetCache()\n"}
+,{"stream_name":"stdout","time":46.990047555,"data":"\n"}
+,{"stream_name":"stdout","time":46.990051731,"data":"../../../usr/local/lib/python3.13/dist-packages/matplotlib/_mathtext.py:45\n"}
+,{"stream_name":"stdout","time":46.990056171,"data":"  /usr/local/lib/python3.13/dist-packages/matplotlib/_mathtext.py:45: PyparsingDeprecationWarning: 'enablePackrat' deprecated - use 'enable_packrat'\n"}
+,{"stream_name":"stdout","time":46.990090137,"data":"    ParserElement.enablePackrat()\n"}
+,{"stream_name":"stdout","time":46.990093139,"data":"\n"}
+,{"stream_name":"stdout","time":46.990113883,"data":"-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n"}
+,{"stream_name":"stdout","time":46.990118018,"data":"14 passed, 14 warnings in 30.74s\n"}
+,{"stream_name":"stdout","time":170.443421183,"data":"[extract] voc_root=/kaggle/input/pascal-voc-2012-dataset/VOC2012_train_val/VOC2012_train_val train=1464 pool=1264 dev=200 val=1449\n"}
+,{"stream_name":"stderr","time":173.476010219,"data":"\rLoading weights:   0%|          | 0/211 [00:00\u003c?, ?it/s]\rLoading weights:   7%|▋         | 15/211 [00:00\u003c00:01, 104.35it/s]\rLoading weights:  15%|█▍        | 31/211 [00:00\u003c00:01, 90.36it/s] \rLoading weights:  19%|█▉        | 41/211 [00:00\u003c00:02, 80.33it/s]\rLoading weights:  26%|██▌       | 55/211 [00:00\u003c00:01, 84.18it/s]\rLoading weights:  31%|███▏      | 66/211 [00:00\u003c00:01, 87.76it/s]\rLoading weights:  36%|███▌      | 75/211 [00:00\u003c00:01, 78.74it/s]\rLoading weights:  39%|███▉      | 83/211 [00:01\u003c00:01, 78.57it/s]\rLoading weights:  43%|████▎     | 91/211 [00:01\u003c00:01, 70.41it/s]\rLoading weights:  47%|████▋     | 99/211 [00:01\u003c00:01, 63.98it/s]\rLoading weights:  51%|█████     | 107/211 [00:01\u003c00:01, 62.35it/s]\rLoading weights:  54%|█████▍    | 114/211 [00:01\u003c00:01, 56.04it/s]\rLoading weights:  58%|█████▊    | 122/211 [00:01\u003c00:01, 61.53it/s]\rLoading weights:  61%|██████    | 129/211 [00:01\u003c00:01, 63.22it/s]\rLoading weights:  64%|██████▍   | 136/211 [00:01\u003c00:01, 62.37it/s]\rLoading weights:  68%|██████▊   | 143/211 [00:02\u003c00:01, 55.30it/s]\rLoading weights:  71%|███████   | 149/211 [00:02\u003c00:01, 56.10it/s]\rLoading weights:  74%|███████▍  | 157/211 [00:02\u003c00:00, 56.03it/s]\rLoading weights:  77%|███████▋  | 163/211 [00:02\u003c00:00, 54.94it/s]\rLoading weights:  82%|████████▏ | 172/211 [00:02\u003c00:00, 49.65it/s]\rLoading weights:  84%|████████▍ | 178/211 [00:02\u003c00:00, 50.13it/s]\rLoading weights:  89%|████████▊ | 187/211 [00:03\u003c00:00, 43.76it/s]\rLoading weights: 100%|██████████| 211/211 [00:03\u003c00:00, 69.59it/s]\n"}
+,{"stream_name":"stdout","time":280.233624917,"data":"[extract] {'encoder': 'dinov3', 'model': '/kaggle/input/dinov3-vitb16-weights', 'params_m': 85.660416, 'extract_time_s': 92.9, 'images_per_s': 31.36, 'peak_mem_mb': 1058.291015625, 'gpu': 'Tesla T4'}\n"}
+,{"stream_name":"stderr","time":399.060888615,"data":"wandb: Tracking run with wandb version 0.28.1\n"}
+,{"stream_name":"stderr","time":399.061222375,"data":"wandb: W\u0026B syncing is set to `offline` in this directory. Run `wandb online` or set WANDB_MODE=online to enable cloud syncing.\n"}
+,{"stream_name":"stderr","time":399.061243215,"data":"wandb: Run data is saved locally in /kaggle/working/repo/wandb/offline-run-20261115_015520-tyurto7v\n"}
+,{"stream_name":"stderr","time":399.061250871,"data":"wandb: View this run in the terminal with `wandb leet`\n"}
+,{"stream_name":"stderr","time":400.675463418,"data":"Using 16bit Automatic Mixed Precision (AMP)\n"}
+,{"stream_name":"stderr","time":400.737904813,"data":"GPU available: True (cuda), used: True\n"}
+,{"stream_name":"stderr","time":400.738842755,"data":"TPU available: False, using: 0 TPU cores\n"}
+,{"stream_name":"stderr","time":400.739726685,"data":"💡 Tip: For seamless cloud logging and experiment tracking, try installing [litlogger](https://pypi.org/project/litlogger/) to enable LitLogger, which logs metrics and artifacts automatically to the Lightning Experiments platform.\n"}
+,{"stream_name":"stderr","time":400.740003552,"data":"`Trainer(limit_val_batches=1.0)` was configured so 100% of the batches will be used..\n"}
+,{"stream_name":"stderr","time":400.743042985,"data":"LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0,1]\n"}
+,{"stream_name":"stderr","time":400.748972933,"data":"/usr/local/lib/python3.13/dist-packages/lightning/pytorch/utilities/_pytree.py:21: `isinstance(treespec, LeafSpec)` is deprecated, use `isinstance(treespec, TreeSpec) and treespec.is_leaf()` instead.\n"}
+,{"stream_name":"stderr","time":400.749275147,"data":"/usr/local/lib/python3.13/dist-packages/lightning/pytorch/trainer/connectors/data_connector.py:434: The 'train_dataloader' does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` to `num_workers=3` in the `DataLoader` to improve performance.\n"}
+,{"stream_name":"stderr","time":400.800297336,"data":"/usr/local/lib/python3.13/dist-packages/lightning/pytorch/trainer/connectors/data_connector.py:434: The 'val_dataloader' does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` to `num_workers=3` in the `DataLoader` to improve performance.\n"}
+,{"stream_name":"stderr","time":481.651628212,"data":"`Trainer.fit` stopped: `max_steps=1000` reached.\n"}
+,{"stream_name":"stderr","time":491.682516318,"data":"Using 16bit Automatic Mixed Precision (AMP)\n"}
+,{"stream_name":"stderr","time":491.747893637,"data":"GPU available: True (cuda), used: True\n"}
+,{"stream_name":"stderr","time":491.74803926,"data":"TPU available: False, using: 0 TPU cores\n"}
+,{"stream_name":"stderr","time":491.748453354,"data":"💡 Tip: For seamless cloud logging and experiment tracking, try installing [litlogger](https://pypi.org/project/litlogger/) to enable LitLogger, which logs metrics and artifacts automatically to the Lightning Experiments platform.\n"}
+,{"stream_name":"stderr","time":491.74904669,"data":"`Trainer(limit_val_batches=1.0)` was configured so 100% of the batches will be used..\n"}
+,{"stream_name":"stderr","time":491.750696613,"data":"LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0,1]\n"}
+,{"stream_name":"stderr","time":589.640137234,"data":"`Trainer.fit` stopped: `max_steps=1000` reached.\n"}
+,{"stream_name":"stderr","time":599.567515828,"data":"Using 16bit Automatic Mixed Precision (AMP)\n"}
+,{"stream_name":"stderr","time":599.633353885,"data":"GPU available: True (cuda), used: True\n"}
+,{"stream_name":"stderr","time":599.633534126,"data":"TPU available: False, using: 0 TPU cores\n"}
+,{"stream_name":"stderr","time":599.634027843,"data":"💡 Tip: For seamless cloud logging and experiment tracking, try installing [litlogger](https://pypi.org/project/litlogger/) to enable LitLogger, which logs metrics and artifacts automatically to the Lightning Experiments platform.\n"}
+,{"stream_name":"stderr","time":599.634280932,"data":"`Trainer(limit_val_batches=1.0)` was configured so 100% of the batches will be used..\n"}
+,{"stream_name":"stderr","time":599.636158902,"data":"LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0,1]\n"}
+,{"stream_name":"stderr","time":676.879769277,"data":"`Trainer.fit` stopped: `max_steps=1000` reached.\n"}
+,{"stream_name":"stderr","time":689.022388994,"data":"Using 16bit Automatic Mixed Precision (AMP)\n"}
+,{"stream_name":"stderr","time":689.086792402,"data":"GPU available: True (cuda), used: True\n"}
+,{"stream_name":"stderr","time":689.087077033,"data":"TPU available: False, using: 0 TPU cores\n"}
+,{"stream_name":"stderr","time":689.087358244,"data":"💡 Tip: For seamless cloud logging and experiment tracking, try installing [litlogger](https://pypi.org/project/litlogger/) to enable LitLogger, which logs metrics and artifacts automatically to the Lightning Experiments platform.\n"}
+,{"stream_name":"stderr","time":689.087588755,"data":"`Trainer(limit_val_batches=1.0)` was configured so 100% of the batches will be used..\n"}
+,{"stream_name":"stderr","time":689.089142952,"data":"LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0,1]\n"}
+,{"stream_name":"stderr","time":766.183772873,"data":"`Trainer.fit` stopped: `max_steps=1000` reached.\n"}
+,{"stream_name":"stderr","time":781.965330987,"data":"Using 16bit Automatic Mixed Precision (AMP)\n"}
+,{"stream_name":"stderr","time":782.030738937,"data":"GPU available: True (cuda), used: True\n"}
+,{"stream_name":"stderr","time":782.031004848,"data":"TPU available: False, using: 0 TPU cores\n"}
+,{"stream_name":"stderr","time":782.031451549,"data":"💡 Tip: For seamless cloud logging and experiment tracking, try installing [litlogger](https://pypi.org/project/litlogger/) to enable LitLogger, which logs metrics and artifacts automatically to the Lightning Experiments platform.\n"}
+,{"stream_name":"stderr","time":782.031731089,"data":"`Trainer(limit_val_batches=1.0)` was configured so 100% of the batches will be used..\n"}
+,{"stream_name":"stderr","time":782.033356709,"data":"LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0,1]\n"}
+,{"stream_name":"stderr","time":859.396083832,"data":"`Trainer.fit` stopped: `max_steps=1000` reached.\n"}
+,{"stream_name":"stderr","time":882.623955694,"data":"Using 16bit Automatic Mixed Precision (AMP)\n"}
+,{"stream_name":"stderr","time":882.690606256,"data":"GPU available: True (cuda), used: True\n"}
+,{"stream_name":"stderr","time":882.690914692,"data":"TPU available: False, using: 0 TPU cores\n"}
+,{"stream_name":"stderr","time":882.691200697,"data":"💡 Tip: For seamless cloud logging and experiment tracking, try installing [litlogger](https://pypi.org/project/litlogger/) to enable LitLogger, which logs metrics and artifacts automatically to the Lightning Experiments platform.\n"}
+,{"stream_name":"stderr","time":882.691592598,"data":"`Trainer(limit_val_batches=1.0)` was configured so 100% of the batches will be used..\n"}
+,{"stream_name":"stderr","time":882.692910498,"data":"LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0,1]\n"}
+,{"stream_name":"stderr","time":960.30041627,"data":"`Trainer.fit` stopped: `max_steps=1000` reached.\n"}
+,{"stream_name":"stderr","time":1002.276916121,"data":"wandb: \n"}
+,{"stream_name":"stderr","time":1002.276948254,"data":"wandb: Run history:\n"}
+,{"stream_name":"stderr","time":1002.27695437,"data":"wandb:   al/ball_coverage ▁▂▂▃▅█\n"}
+,{"stream_name":"stderr","time":1002.27696048,"data":"wandb:    al/boundary_len ▁▁▂▃▄█\n"}
+,{"stream_name":"stderr","time":1002.276965684,"data":"wandb:         al/dev_ece █▄▃▂▁▁\n"}
+,{"stream_name":"stderr","time":1002.276971264,"data":"wandb:        al/dev_miou ▁▅▆▇██\n"}
+,{"stream_name":"stderr","time":1002.27697669,"data":"wandb: al/kernel_coverage ▁▂▃▄▅█\n"}
+,{"stream_name":"stderr","time":1002.27698197,"data":"wandb:       al/n_labeled ▁▁▂▃▄█\n"}
+,{"stream_name":"stderr","time":1002.276987195,"data":"wandb:       al/n_objects ▁▁▂▃▄█\n"}
+,{"stream_name":"stderr","time":1002.276992392,"data":"wandb:           al/round ▁▂▄▅▇█\n"}
+,{"stream_name":"stderr","time":1002.276997654,"data":"wandb:   al/select_time_s █▁▁▁▁▂\n"}
+,{"stream_name":"stderr","time":1002.277002711,"data":"wandb:      al/total_gain █▁▁▁▁▂\n"}
+,{"stream_name":"stderr","time":1002.277007933,"data":"wandb:                +62 ...\n"}
+,{"stream_name":"stderr","time":1002.277013035,"data":"wandb: \n"}
+,{"stream_name":"stderr","time":1002.277018007,"data":"wandb: Run summary:\n"}
+,{"stream_name":"stderr","time":1002.27702298,"data":"wandb:   al/ball_coverage 0.75\n"}
+,{"stream_name":"stderr","time":1002.277037548,"data":"wandb:    al/boundary_len 1041181\n"}
+,{"stream_name":"stderr","time":1002.277041913,"data":"wandb:         al/dev_ece 0.01384\n"}
+,{"stream_name":"stderr","time":1002.277046037,"data":"wandb:        al/dev_miou 0.82125\n"}
+,{"stream_name":"stderr","time":1002.277050065,"data":"wandb: al/kernel_coverage 0.87759\n"}
+,{"stream_name":"stderr","time":1002.277054095,"data":"wandb:       al/n_labeled 672\n"}
+,{"stream_name":"stderr","time":1002.27705812,"data":"wandb:       al/n_objects 1457\n"}
+,{"stream_name":"stderr","time":1002.277062225,"data":"wandb:           al/round 5\n"}
+,{"stream_name":"stderr","time":1002.277066267,"data":"wandb:   al/select_time_s 0.10371\n"}
+,{"stream_name":"stderr","time":1002.277070349,"data":"wandb:      al/total_gain 125.94155\n"}
+,{"stream_name":"stderr","time":1002.27707448,"data":"wandb:                +64 ...\n"}
+,{"stream_name":"stderr","time":1002.277078593,"data":"wandb: \n"}
+,{"stream_name":"stderr","time":1002.277086994,"data":"wandb: You can sync this run to the cloud by running:\n"}
+,{"stream_name":"stderr","time":1002.277091289,"data":"wandb: wandb sync /kaggle/working/repo/wandb/offline-run-20261115_015520-tyurto7v\n"}
+,{"stream_name":"stderr","time":1002.27730863,"data":"wandb: Find logs at: ./wandb/offline-run-20261115_015520-tyurto7v/logs\n"}
+,{"stream_name":"stdout","time":1002.351005369,"data":"[al] maxherding-dinov3-s0: pool=1264 sigma=0.4102 delta=0.2280\n"}
+,{"stream_name":"stdout","time":1002.351063221,"data":"[al] maxherding-dinov3-s0 round 0: n=21 val_miou=0.4086 dev_miou=0.3856 select=0.8s train=80.9s\n"}
+,{"stream_name":"stdout","time":1002.351069789,"data":"[al] maxherding-dinov3-s0 round 1: n=42 val_miou=0.6197 dev_miou=0.6222 select=0.0s train=97.9s\n"}
+,{"stream_name":"stdout","time":1002.351074699,"data":"[al] maxherding-dinov3-s0 round 2: n=84 val_miou=0.7023 dev_miou=0.7229 select=0.0s train=77.3s\n"}
+,{"stream_name":"stdout","time":1002.351079149,"data":"[al] maxherding-dinov3-s0 round 3: n=168 val_miou=0.7705 dev_miou=0.7686 select=0.0s train=77.1s\n"}
+,{"stream_name":"stdout","time":1002.351083009,"data":"[al] maxherding-dinov3-s0 round 4: n=336 val_miou=0.8112 dev_miou=0.8082 select=0.1s train=77.4s\n"}
+,{"stream_name":"stdout","time":1002.351086629,"data":"[al] maxherding-dinov3-s0 round 5: n=672 val_miou=0.8305 dev_miou=0.8213 select=0.1s train=77.6s\n"}
+,{"stream_name":"stderr","time":1018.831748329,"data":"wandb: Tracking run with wandb version 0.28.1\n"}
+,{"stream_name":"stderr","time":1018.83177636,"data":"wandb: W\u0026B syncing is set to `offline` in this directory. Run `wandb online` or set WANDB_MODE=online to enable cloud syncing.\n"}
+,{"stream_name":"stderr","time":1018.831782429,"data":"wandb: Run data is saved locally in /kaggle/working/repo/wandb/offline-run-20261115_020540-mu7l6w60\n"}
+,{"stream_name":"stderr","time":1018.831787012,"data":"wandb: View this run in the terminal with `wandb leet`\n"}
+,{"stream_name":"stderr","time":1020.367293765,"data":"Using 16bit Automatic Mixed Precision (AMP)\n"}
+,{"stream_name":"stderr","time":1020.429883907,"data":"GPU available: True (cuda), used: True\n"}
+,{"stream_name":"stderr","time":1020.430929571,"data":"TPU available: False, using: 0 TPU cores\n"}
+,{"stream_name":"stderr","time":1020.431727491,"data":"💡 Tip: For seamless cloud logging and experiment tracking, try installing [litlogger](https://pypi.org/project/litlogger/) to enable LitLogger, which logs metrics and artifacts automatically to the Lightning Experiments platform.\n"}
+,{"stream_name":"stderr","time":1020.431985946,"data":"`Trainer(limit_val_batches=1.0)` was configured so 100% of the batches will be used..\n"}
+,{"stream_name":"stderr","time":1020.434177022,"data":"LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0,1]\n"}
+,{"stream_name":"stderr","time":1020.440150667,"data":"/usr/local/lib/python3.13/dist-packages/lightning/pytorch/utilities/_pytree.py:21: `isinstance(treespec, LeafSpec)` is deprecated, use `isinstance(treespec, TreeSpec) and treespec.is_leaf()` instead.\n"}
+,{"stream_name":"stderr","time":1020.440508602,"data":"/usr/local/lib/python3.13/dist-packages/lightning/pytorch/trainer/connectors/data_connector.py:434: The 'train_dataloader' does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` to `num_workers=3` in the `DataLoader` to improve performance.\n"}
+,{"stream_name":"stderr","time":1020.463892644,"data":"/usr/local/lib/python3.13/dist-packages/lightning/pytorch/trainer/connectors/data_connector.py:434: The 'val_dataloader' does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` to `num_workers=3` in the `DataLoader` to improve performance.\n"}
+,{"stream_name":"stderr","time":1102.024906518,"data":"`Trainer.fit` stopped: `max_steps=1000` reached.\n"}
+,{"stream_name":"stderr","time":1110.75246566,"data":"Using 16bit Automatic Mixed Precision (AMP)\n"}
+,{"stream_name":"stderr","time":1110.81730219,"data":"GPU available: True (cuda), used: True\n"}
+,{"stream_name":"stderr","time":1110.817628984,"data":"TPU available: False, using: 0 TPU cores\n"}
+,{"stream_name":"stderr","time":1110.818029969,"data":"💡 Tip: For seamless cloud logging and experiment tracking, try installing [litlogger](https://pypi.org/project/litlogger/) to enable LitLogger, which logs metrics and artifacts automatically to the Lightning Experiments platform.\n"}
+,{"stream_name":"stderr","time":1110.818277093,"data":"`Trainer(limit_val_batches=1.0)` was configured so 100% of the batches will be used..\n"}
+,{"stream_name":"stderr","time":1110.819897148,"data":"LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0,1]\n"}
+,{"stream_name":"stderr","time":1208.313690103,"data":"`Trainer.fit` stopped: `max_steps=1000` reached.\n"}
+,{"stream_name":"stderr","time":1217.189593452,"data":"Using 16bit Automatic Mixed Precision (AMP)\n"}
+,{"stream_name":"stderr","time":1217.252305493,"data":"GPU available: True (cuda), used: True\n"}
+,{"stream_name":"stderr","time":1217.252619535,"data":"TPU available: False, using: 0 TPU cores\n"}
+,{"stream_name":"stderr","time":1217.252910032,"data":"💡 Tip: For seamless cloud logging and experiment tracking, try installing [litlogger](https://pypi.org/project/litlogger/) to enable LitLogger, which logs metrics and artifacts automatically to the Lightning Experiments platform.\n"}
+,{"stream_name":"stderr","time":1217.253470197,"data":"`Trainer(limit_val_batches=1.0)` was configured so 100% of the batches will be used..\n"}
+,{"stream_name":"stderr","time":1217.255082599,"data":"LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0,1]\n"}
+,{"stream_name":"stderr","time":1294.132092571,"data":"`Trainer.fit` stopped: `max_steps=1000` reached.\n"}
+,{"stream_name":"stderr","time":1304.787074064,"data":"Using 16bit Automatic Mixed Precision (AMP)\n"}
+,{"stream_name":"stderr","time":1304.851644501,"data":"GPU available: True (cuda), used: True\n"}
+,{"stream_name":"stderr","time":1304.851939727,"data":"TPU available: False, using: 0 TPU cores\n"}
+,{"stream_name":"stderr","time":1304.852210542,"data":"💡 Tip: For seamless cloud logging and experiment tracking, try installing [litlogger](https://pypi.org/project/litlogger/) to enable LitLogger, which logs metrics and artifacts automatically to the Lightning Experiments platform.\n"}
+,{"stream_name":"stderr","time":1304.852611234,"data":"`Trainer(limit_val_batches=1.0)` was configured so 100% of the batches will be used..\n"}
+,{"stream_name":"stderr","time":1304.854279116,"data":"LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0,1]\n"}
+,{"stream_name":"stderr","time":1381.830197111,"data":"`Trainer.fit` stopped: `max_steps=1000` reached.\n"}
+,{"stream_name":"stderr","time":1393.75456061,"data":"Using 16bit Automatic Mixed Precision (AMP)\n"}
+,{"stream_name":"stderr","time":1393.817186104,"data":"GPU available: True (cuda), used: True\n"}
+,{"stream_name":"stderr","time":1393.817460524,"data":"TPU available: False, using: 0 TPU cores\n"}
+,{"stream_name":"stderr","time":1393.81785669,"data":"💡 Tip: For seamless cloud logging and experiment tracking, try installing [litlogger](https://pypi.org/project/litlogger/) to enable LitLogger, which logs metrics and artifacts automatically to the Lightning Experiments platform.\n"}
+,{"stream_name":"stderr","time":1393.818137006,"data":"`Trainer(limit_val_batches=1.0)` was configured so 100% of the batches will be used..\n"}
+,{"stream_name":"stderr","time":1393.819509914,"data":"LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0,1]\n"}
+,{"stream_name":"stderr","time":1470.406907977,"data":"`Trainer.fit` stopped: `max_steps=1000` reached.\n"}
+,{"stream_name":"stderr","time":1485.592559352,"data":"Using 16bit Automatic Mixed Precision (AMP)\n"}
+,{"stream_name":"stderr","time":1485.655064456,"data":"GPU available: True (cuda), used: True\n"}
+,{"stream_name":"stderr","time":1485.655536763,"data":"TPU available: False, using: 0 TPU cores\n"}
+,{"stream_name":"stderr","time":1485.655974232,"data":"💡 Tip: For seamless cloud logging and experiment tracking, try installing [litlogger](https://pypi.org/project/litlogger/) to enable LitLogger, which logs metrics and artifacts automatically to the Lightning Experiments platform.\n"}
+,{"stream_name":"stderr","time":1485.656387307,"data":"`Trainer(limit_val_batches=1.0)` was configured so 100% of the batches will be used..\n"}
+,{"stream_name":"stderr","time":1485.657620881,"data":"LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0,1]\n"}
+,{"stream_name":"stderr","time":1562.51900355,"data":"`Trainer.fit` stopped: `max_steps=1000` reached.\n"}
+,{"stream_name":"stderr","time":1589.191349986,"data":"wandb: \n"}
+,{"stream_name":"stderr","time":1589.19138294,"data":"wandb: Run history:\n"}
+,{"stream_name":"stderr","time":1589.191390045,"data":"wandb:   al/ball_coverage ▁▂▂▃▅█\n"}
+,{"stream_name":"stderr","time":1589.19139769,"data":"wandb:    al/boundary_len ▁▁▂▃▄█\n"}
+,{"stream_name":"stderr","time":1589.191405035,"data":"wandb:         al/dev_ece █▅▃▃▂▁\n"}
+,{"stream_name":"stderr","time":1589.191411727,"data":"wandb:        al/dev_miou ▁▃▆▇▇█\n"}
+,{"stream_name":"stderr","time":1589.191417386,"data":"wandb: al/kernel_coverage ▁▂▃▄▅█\n"}
+,{"stream_name":"stderr","time":1589.191422845,"data":"wandb:       al/n_labeled ▁▁▂▃▄█\n"}
+,{"stream_name":"stderr","time":1589.191428225,"data":"wandb:       al/n_objects ▁▁▂▃▅█\n"}
+,{"stream_name":"stderr","time":1589.191433595,"data":"wandb:           al/round ▁▂▄▅▇█\n"}
+,{"stream_name":"stderr","time":1589.191439798,"data":"wandb:   al/select_time_s █▁▁▁▁▂\n"}
+,{"stream_name":"stderr","time":1589.191446028,"data":"wandb:      al/total_gain ▅▁▂▂▄█\n"}
+,{"stream_name":"stderr","time":1589.191451743,"data":"wandb:                +62 ...\n"}
+,{"stream_name":"stderr","time":1589.191458342,"data":"wandb: \n"}
+,{"stream_name":"stderr","time":1589.19146442,"data":"wandb: Run summary:\n"}
+,{"stream_name":"stderr","time":1589.191471086,"data":"wandb:   al/ball_coverage 0.76108\n"}
+,{"stream_name":"stderr","time":1589.19147735,"data":"wandb:    al/boundary_len 1053830\n"}
+,{"stream_name":"stderr","time":1589.191497417,"data":"wandb:         al/dev_ece 0.01191\n"}
+,{"stream_name":"stderr","time":1589.191502906,"data":"wandb:        al/dev_miou 0.83083\n"}
+,{"stream_name":"stderr","time":1589.191508084,"data":"wandb: al/kernel_coverage 0.86195\n"}
+,{"stream_name":"stderr","time":1589.19151289,"data":"wandb:       al/n_labeled 672\n"}
+,{"stream_name":"stderr","time":1589.19151811,"data":"wandb:       al/n_objects 1504\n"}
+,{"stream_name":"stderr","time":1589.19152279,"data":"wandb:           al/round 5\n"}
+,{"stream_name":"stderr","time":1589.19152819,"data":"wandb:   al/select_time_s 0.10172\n"}
+,{"stream_name":"stderr","time":1589.19153335,"data":"wandb:      al/total_gain 336\n"}
+,{"stream_name":"stderr","time":1589.19153836,"data":"wandb:                +64 ...\n"}
+,{"stream_name":"stderr","time":1589.191557885,"data":"wandb: \n"}
+,{"stream_name":"stderr","time":1589.191565678,"data":"wandb: You can sync this run to the cloud by running:\n"}
+,{"stream_name":"stderr","time":1589.191570177,"data":"wandb: wandb sync /kaggle/working/repo/wandb/offline-run-20261115_020540-mu7l6w60\n"}
+,{"stream_name":"stderr","time":1589.191757953,"data":"wandb: Find logs at: ./wandb/offline-run-20261115_020540-mu7l6w60/logs\n"}
+,{"stream_name":"stdout","time":1589.259083797,"data":"[al] probcover-dinov3-s0: pool=1264 sigma=0.4102 delta=0.2280\n"}
+,{"stream_name":"stdout","time":1589.25914686,"data":"[al] probcover-dinov3-s0 round 0: n=21 val_miou=0.3107 dev_miou=0.3041 select=0.8s train=81.6s\n"}
+,{"stream_name":"stdout","time":1589.259154065,"data":"[al] probcover-dinov3-s0 round 1: n=42 val_miou=0.4998 dev_miou=0.4780 select=0.0s train=97.5s\n"}
+,{"stream_name":"stdout","time":1589.259159288,"data":"[al] probcover-dinov3-s0 round 2: n=84 val_miou=0.6411 dev_miou=0.6595 select=0.0s train=76.9s\n"}
+,{"stream_name":"stdout","time":1589.259163877,"data":"[al] probcover-dinov3-s0 round 3: n=168 val_miou=0.7638 dev_miou=0.7410 select=0.0s train=77.0s\n"}
+,{"stream_name":"stdout","time":1589.259168116,"data":"[al] probcover-dinov3-s0 round 4: n=336 val_miou=0.7947 dev_miou=0.7742 select=0.1s train=76.6s\n"}
+,{"stream_name":"stdout","time":1589.259172679,"data":"[al] probcover-dinov3-s0 round 5: n=672 val_miou=0.8452 dev_miou=0.8308 select=0.1s train=76.9s\n"}
+,{"stream_name":"stderr","time":1605.903892109,"data":"wandb: Tracking run with wandb version 0.28.1\n"}
+,{"stream_name":"stderr","time":1605.903922208,"data":"wandb: W\u0026B syncing is set to `offline` in this directory. Run `wandb online` or set WANDB_MODE=online to enable cloud syncing.\n"}
+,{"stream_name":"stderr","time":1605.903929144,"data":"wandb: Run data is saved locally in /kaggle/working/repo/wandb/offline-run-20261115_021527-vkwndz4r\n"}
+,{"stream_name":"stderr","time":1605.903933666,"data":"wandb: View this run in the terminal with `wandb leet`\n"}
+,{"stream_name":"stderr","time":1607.452279176,"data":"Using 16bit Automatic Mixed Precision (AMP)\n"}
+,{"stream_name":"stderr","time":1607.515002552,"data":"GPU available: True (cuda), used: True\n"}
+,{"stream_name":"stderr","time":1607.516140063,"data":"TPU available: False, using: 0 TPU cores\n"}
+,{"stream_name":"stderr","time":1607.516964365,"data":"💡 Tip: For seamless cloud logging and experiment tracking, try installing [litlogger](https://pypi.org/project/litlogger/) to enable LitLogger, which logs metrics and artifacts automatically to the Lightning Experiments platform.\n"}
+,{"stream_name":"stderr","time":1607.517192007,"data":"`Trainer(limit_val_batches=1.0)` was configured so 100% of the batches will be used..\n"}
+,{"stream_name":"stderr","time":1607.519213382,"data":"LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0,1]\n"}
+,{"stream_name":"stderr","time":1607.525200704,"data":"/usr/local/lib/python3.13/dist-packages/lightning/pytorch/utilities/_pytree.py:21: `isinstance(treespec, LeafSpec)` is deprecated, use `isinstance(treespec, TreeSpec) and treespec.is_leaf()` instead.\n"}
+,{"stream_name":"stderr","time":1607.525430584,"data":"/usr/local/lib/python3.13/dist-packages/lightning/pytorch/trainer/connectors/data_connector.py:434: The 'train_dataloader' does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` to `num_workers=3` in the `DataLoader` to improve performance.\n"}
+,{"stream_name":"stderr","time":1607.557506836,"data":"/usr/local/lib/python3.13/dist-packages/lightning/pytorch/trainer/connectors/data_connector.py:434: The 'val_dataloader' does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` to `num_workers=3` in the `DataLoader` to improve performance.\n"}
+,{"stream_name":"stderr","time":1689.248337205,"data":"`Trainer.fit` stopped: `max_steps=1000` reached.\n"}
+,{"stream_name":"stderr","time":1697.758407487,"data":"Using 16bit Automatic Mixed Precision (AMP)\n"}
+,{"stream_name":"stderr","time":1697.82034718,"data":"GPU available: True (cuda), used: True\n"}
+,{"stream_name":"stderr","time":1697.820518675,"data":"TPU available: False, using: 0 TPU cores\n"}
+,{"stream_name":"stderr","time":1697.820774283,"data":"💡 Tip: For seamless cloud logging and experiment tracking, try installing [litlogger](https://pypi.org/project/litlogger/) to enable LitLogger, which logs metrics and artifacts automatically to the Lightning Experiments platform.\n"}
+,{"stream_name":"stderr","time":1697.821052791,"data":"`Trainer(limit_val_batches=1.0)` was configured so 100% of the batches will be used..\n"}
+,{"stream_name":"stderr","time":1697.823215725,"data":"LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0,1]\n"}
+,{"stream_name":"stderr","time":1794.691140489,"data":"`Trainer.fit` stopped: `max_steps=1000` reached.\n"}
+,{"stream_name":"stderr","time":1803.425770171,"data":"Using 16bit Automatic Mixed Precision (AMP)\n"}
+,{"stream_name":"stderr","time":1803.488902163,"data":"GPU available: True (cuda), used: True\n"}
+,{"stream_name":"stderr","time":1803.489087885,"data":"TPU available: False, using: 0 TPU cores\n"}
+,{"stream_name":"stderr","time":1803.48952358,"data":"💡 Tip: For seamless cloud logging and experiment tracking, try installing [litlogger](https://pypi.org/project/litlogger/) to enable LitLogger, which logs metrics and artifacts automatically to the Lightning Experiments platform.\n"}
+,{"stream_name":"stderr","time":1803.489861355,"data":"`Trainer(limit_val_batches=1.0)` was configured so 100% of the batches will be used..\n"}
+,{"stream_name":"stderr","time":1803.49150577,"data":"LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0,1]\n"}
+,{"stream_name":"stderr","time":1880.429222615,"data":"`Trainer.fit` stopped: `max_steps=1000` reached.\n"}
+,{"stream_name":"stderr","time":1889.54562144,"data":"Using 16bit Automatic Mixed Precision (AMP)\n"}
+,{"stream_name":"stderr","time":1889.608013207,"data":"GPU available: True (cuda), used: True\n"}
+,{"stream_name":"stderr","time":1889.608472928,"data":"TPU available: False, using: 0 TPU cores\n"}
+,{"stream_name":"stderr","time":1889.60888265,"data":"💡 Tip: For seamless cloud logging and experiment tracking, try installing [litlogger](https://pypi.org/project/litlogger/) to enable LitLogger, which logs metrics and artifacts automatically to the Lightning Experiments platform.\n"}
+,{"stream_name":"stderr","time":1889.6092929,"data":"`Trainer(limit_val_batches=1.0)` was configured so 100% of the batches will be used..\n"}
+,{"stream_name":"stderr","time":1889.610457342,"data":"LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0,1]\n"}
+,{"stream_name":"stderr","time":1966.476898646,"data":"`Trainer.fit` stopped: `max_steps=1000` reached.\n"}
+,{"stream_name":"stderr","time":1976.167256495,"data":"Using 16bit Automatic Mixed Precision (AMP)\n"}
+,{"stream_name":"stderr","time":1976.229324074,"data":"GPU available: True (cuda), used: True\n"}
+,{"stream_name":"stderr","time":1976.229610406,"data":"TPU available: False, using: 0 TPU cores\n"}
+,{"stream_name":"stderr","time":1976.230150701,"data":"💡 Tip: For seamless cloud logging and experiment tracking, try installing [litlogger](https://pypi.org/project/litlogger/) to enable LitLogger, which logs metrics and artifacts automatically to the Lightning Experiments platform.\n"}
+,{"stream_name":"stderr","time":1976.230670164,"data":"`Trainer(limit_val_batches=1.0)` was configured so 100% of the batches will be used..\n"}
+,{"stream_name":"stderr","time":1976.232173663,"data":"LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0,1]\n"}
+,{"stream_name":"stderr","time":2053.135290204,"data":"`Trainer.fit` stopped: `max_steps=1000` reached.\n"}
+,{"stream_name":"stderr","time":2064.082451067,"data":"Using 16bit Automatic Mixed Precision (AMP)\n"}
+,{"stream_name":"stderr","time":2064.143775117,"data":"GPU available: True (cuda), used: True\n"}
+,{"stream_name":"stderr","time":2064.14398441,"data":"TPU available: False, using: 0 TPU cores\n"}
+,{"stream_name":"stderr","time":2064.144395451,"data":"💡 Tip: For seamless cloud logging and experiment tracking, try installing [litlogger](https://pypi.org/project/litlogger/) to enable LitLogger, which logs metrics and artifacts automatically to the Lightning Experiments platform.\n"}
+,{"stream_name":"stderr","time":2064.144640397,"data":"`Trainer(limit_val_batches=1.0)` was configured so 100% of the batches will be used..\n"}
+,{"stream_name":"stderr","time":2064.146154716,"data":"LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0,1]\n"}
+,{"stream_name":"stderr","time":2140.881792187,"data":"`Trainer.fit` stopped: `max_steps=1000` reached.\n"}
+,{"stream_name":"stderr","time":2158.195784165,"data":"wandb: \n"}
+,{"stream_name":"stderr","time":2158.195826546,"data":"wandb: Run history:\n"}
+,{"stream_name":"stderr","time":2158.195833628,"data":"wandb:   al/ball_coverage ▁▂▂▃▅█\n"}
+,{"stream_name":"stderr","time":2158.195839976,"data":"wandb:    al/boundary_len ▁▁▂▃▄█\n"}
+,{"stream_name":"stderr","time":2158.195845262,"data":"wandb:         al/dev_ece █▅▃▂▁▁\n"}
+,{"stream_name":"stderr","time":2158.195850476,"data":"wandb:        al/dev_miou ▁▄▇▇██\n"}
+,{"stream_name":"stderr","time":2158.195855656,"data":"wandb: al/kernel_coverage ▁▂▃▄▅█\n"}
+,{"stream_name":"stderr","time":2158.195860857,"data":"wandb:       al/n_labeled ▁▁▂▃▄█\n"}
+,{"stream_name":"stderr","time":2158.195866069,"data":"wandb:       al/n_objects ▁▁▂▃▄█\n"}
+,{"stream_name":"stderr","time":2158.195871334,"data":"wandb:           al/round ▁▂▄▅▇█\n"}
+,{"stream_name":"stderr","time":2158.195876521,"data":"wandb:   al/select_time_s █▁▁▁▁▂\n"}
+,{"stream_name":"stderr","time":2158.195881666,"data":"wandb:      al/total_gain ▆▁▁▂▄█\n"}
+,{"stream_name":"stderr","time":2158.195886914,"data":"wandb:                +62 ...\n"}
+,{"stream_name":"stderr","time":2158.195892454,"data":"wandb: \n"}
+,{"stream_name":"stderr","time":2158.195897417,"data":"wandb: Run summary:\n"}
+,{"stream_name":"stderr","time":2158.195902293,"data":"wandb:   al/ball_coverage 0.75\n"}
+,{"stream_name":"stderr","time":2158.195907289,"data":"wandb:    al/boundary_len 1038470\n"}
+,{"stream_name":"stderr","time":2158.195912444,"data":"wandb:         al/dev_ece 0.01193\n"}
+,{"stream_name":"stderr","time":2158.195917458,"data":"wandb:        al/dev_miou 0.82576\n"}
+,{"stream_name":"stderr","time":2158.195933343,"data":"wandb: al/kernel_coverage 0.87765\n"}
+,{"stream_name":"stderr","time":2158.195937554,"data":"wandb:       al/n_labeled 672\n"}
+,{"stream_name":"stderr","time":2158.195941661,"data":"wandb:       al/n_objects 1466\n"}
+,{"stream_name":"stderr","time":2158.195945746,"data":"wandb:           al/round 5\n"}
+,{"stream_name":"stderr","time":2158.195949793,"data":"wandb:   al/select_time_s 0.10175\n"}
+,{"stream_name":"stderr","time":2158.195953802,"data":"wandb:      al/total_gain 284.51173\n"}
+,{"stream_name":"stderr","time":2158.195957956,"data":"wandb:                +64 ...\n"}
+,{"stream_name":"stderr","time":2158.195962056,"data":"wandb: \n"}
+,{"stream_name":"stderr","time":2158.195970037,"data":"wandb: You can sync this run to the cloud by running:\n"}
+,{"stream_name":"stderr","time":2158.195974305,"data":"wandb: wandb sync /kaggle/working/repo/wandb/offline-run-20261115_021527-vkwndz4r\n"}
+,{"stream_name":"stderr","time":2158.196173844,"data":"wandb: Find logs at: ./wandb/offline-run-20261115_021527-vkwndz4r/logs\n"}
+,{"stream_name":"stdout","time":2158.257506064,"data":"[al] maxherding-sx0.5-dinov3-s0: pool=1264 sigma=0.2051 delta=0.2280\n"}
+,{"stream_name":"stdout","time":2158.257537149,"data":"[al] maxherding-sx0.5-dinov3-s0 round 0: n=21 val_miou=0.3699 dev_miou=0.3593 select=0.7s train=81.8s\n"}
+,{"stream_name":"stdout","time":2158.257542996,"data":"[al] maxherding-sx0.5-dinov3-s0 round 1: n=42 val_miou=0.5654 dev_miou=0.5717 select=0.0s train=96.9s\n"}
+,{"stream_name":"stdout","time":2158.257546883,"data":"[al] maxherding-sx0.5-dinov3-s0 round 2: n=84 val_miou=0.7163 dev_miou=0.7327 select=0.0s train=77.0s\n"}
+,{"stream_name":"stdout","time":2158.257550467,"data":"[al] maxherding-sx0.5-dinov3-s0 round 3: n=168 val_miou=0.7854 dev_miou=0.7885 select=0.0s train=76.9s\n"}
+,{"stream_name":"stdout","time":2158.257554052,"data":"[al] maxherding-sx0.5-dinov3-s0 round 4: n=336 val_miou=0.8193 dev_miou=0.8107 select=0.1s train=76.9s\n"}
+,{"stream_name":"stdout","time":2158.257557575,"data":"[al] maxherding-sx0.5-dinov3-s0 round 5: n=672 val_miou=0.8347 dev_miou=0.8258 select=0.1s train=76.8s\n"}
+,{"stream_name":"stderr","time":2174.650770516,"data":"wandb: Tracking run with wandb version 0.28.1\n"}
+,{"stream_name":"stderr","time":2174.650987648,"data":"wandb: W\u0026B syncing is set to `offline` in this directory. Run `wandb online` or set WANDB_MODE=online to enable cloud syncing.\n"}
+,{"stream_name":"stderr","time":2174.651002238,"data":"wandb: Run data is saved locally in /kaggle/working/repo/wandb/offline-run-20261115_022456-nokznun7\n"}
+,{"stream_name":"stderr","time":2174.651008579,"data":"wandb: View this run in the terminal with `wandb leet`\n"}
+,{"stream_name":"stderr","time":2176.174211911,"data":"Using 16bit Automatic Mixed Precision (AMP)\n"}
+,{"stream_name":"stderr","time":2176.237515635,"data":"GPU available: True (cuda), used: True\n"}
+,{"stream_name":"stderr","time":2176.238522877,"data":"TPU available: False, using: 0 TPU cores\n"}
+,{"stream_name":"stderr","time":2176.239540974,"data":"💡 Tip: For seamless cloud logging and experiment tracking, try installing [litlogger](https://pypi.org/project/litlogger/) to enable LitLogger, which logs metrics and artifacts automatically to the Lightning Experiments platform.\n"}
+,{"stream_name":"stderr","time":2176.239896533,"data":"`Trainer(limit_val_batches=1.0)` was configured so 100% of the batches will be used..\n"}
+,{"stream_name":"stderr","time":2176.241894283,"data":"LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0,1]\n"}
+,{"stream_name":"stderr","time":2176.247624596,"data":"/usr/local/lib/python3.13/dist-packages/lightning/pytorch/utilities/_pytree.py:21: `isinstance(treespec, LeafSpec)` is deprecated, use `isinstance(treespec, TreeSpec) and treespec.is_leaf()` instead.\n"}
+,{"stream_name":"stderr","time":2176.247988469,"data":"/usr/local/lib/python3.13/dist-packages/lightning/pytorch/trainer/connectors/data_connector.py:434: The 'train_dataloader' does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` to `num_workers=3` in the `DataLoader` to improve performance.\n"}
+,{"stream_name":"stderr","time":2176.27801292,"data":"/usr/local/lib/python3.13/dist-packages/lightning/pytorch/trainer/connectors/data_connector.py:434: The 'val_dataloader' does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` to `num_workers=3` in the `DataLoader` to improve performance.\n"}
+,{"stream_name":"stderr","time":2257.462833896,"data":"`Trainer.fit` stopped: `max_steps=1000` reached.\n"}
+,{"stream_name":"stderr","time":2265.872620122,"data":"Using 16bit Automatic Mixed Precision (AMP)\n"}
+,{"stream_name":"stderr","time":2265.935376281,"data":"GPU available: True (cuda), used: True\n"}
+,{"stream_name":"stderr","time":2265.935616927,"data":"TPU available: False, using: 0 TPU cores\n"}
+,{"stream_name":"stderr","time":2265.936043153,"data":"💡 Tip: For seamless cloud logging and experiment tracking, try installing [litlogger](https://pypi.org/project/litlogger/) to enable LitLogger, which logs metrics and artifacts automatically to the Lightning Experiments platform.\n"}
+,{"stream_name":"stderr","time":2265.936330375,"data":"`Trainer(limit_val_batches=1.0)` was configured so 100% of the batches will be used..\n"}
+,{"stream_name":"stderr","time":2265.937864009,"data":"LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0,1]\n"}
+,{"stream_name":"stderr","time":2361.647530187,"data":"`Trainer.fit` stopped: `max_steps=1000` reached.\n"}
+,{"stream_name":"stderr","time":2370.208688344,"data":"Using 16bit Automatic Mixed Precision (AMP)\n"}
+,{"stream_name":"stderr","time":2370.272879112,"data":"GPU available: True (cuda), used: True\n"}
+,{"stream_name":"stderr","time":2370.273045157,"data":"TPU available: False, using: 0 TPU cores\n"}
+,{"stream_name":"stderr","time":2370.273298292,"data":"💡 Tip: For seamless cloud logging and experiment tracking, try installing [litlogger](https://pypi.org/project/litlogger/) to enable LitLogger, which logs metrics and artifacts automatically to the Lightning Experiments platform.\n"}
+,{"stream_name":"stderr","time":2370.273533976,"data":"`Trainer(limit_val_batches=1.0)` was configured so 100% of the batches will be used..\n"}
+,{"stream_name":"stderr","time":2370.275302118,"data":"LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0,1]\n"}
+,{"stream_name":"stderr","time":2446.811339502,"data":"`Trainer.fit` stopped: `max_steps=1000` reached.\n"}
+,{"stream_name":"stderr","time":2455.657117495,"data":"Using 16bit Automatic Mixed Precision (AMP)\n"}
+,{"stream_name":"stderr","time":2455.719875926,"data":"GPU available: True (cuda), used: True\n"}
+,{"stream_name":"stderr","time":2455.72009651,"data":"TPU available: False, using: 0 TPU cores\n"}
+,{"stream_name":"stderr","time":2455.720386596,"data":"💡 Tip: For seamless cloud logging and experiment tracking, try installing [litlogger](https://pypi.org/project/litlogger/) to enable LitLogger, which logs metrics and artifacts automatically to the Lightning Experiments platform.\n"}
+,{"stream_name":"stderr","time":2455.720638588,"data":"`Trainer(limit_val_batches=1.0)` was configured so 100% of the batches will be used..\n"}
+,{"stream_name":"stderr","time":2455.722205952,"data":"LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0,1]\n"}
+,{"stream_name":"stderr","time":2532.638769046,"data":"`Trainer.fit` stopped: `max_steps=1000` reached.\n"}
+,{"stream_name":"stderr","time":2542.145669878,"data":"Using 16bit Automatic Mixed Precision (AMP)\n"}
+,{"stream_name":"stderr","time":2542.207263234,"data":"GPU available: True (cuda), used: True\n"}
+,{"stream_name":"stderr","time":2542.207442687,"data":"TPU available: False, using: 0 TPU cores\n"}
+,{"stream_name":"stderr","time":2542.207855599,"data":"💡 Tip: For seamless cloud logging and experiment tracking, try installing [litlogger](https://pypi.org/project/litlogger/) to enable LitLogger, which logs metrics and artifacts automatically to the Lightning Experiments platform.\n"}
+,{"stream_name":"stderr","time":2542.208078036,"data":"`Trainer(limit_val_batches=1.0)` was configured so 100% of the batches will be used..\n"}
+,{"stream_name":"stderr","time":2542.20938535,"data":"LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0,1]\n"}
+,{"stream_name":"stderr","time":2619.029010068,"data":"`Trainer.fit` stopped: `max_steps=1000` reached.\n"}
+,{"stream_name":"stderr","time":2629.931511525,"data":"Using 16bit Automatic Mixed Precision (AMP)\n"}
+,{"stream_name":"stderr","time":2629.992534352,"data":"GPU available: True (cuda), used: True\n"}
+,{"stream_name":"stderr","time":2629.992879101,"data":"TPU available: False, using: 0 TPU cores\n"}
+,{"stream_name":"stderr","time":2629.993275454,"data":"💡 Tip: For seamless cloud logging and experiment tracking, try installing [litlogger](https://pypi.org/project/litlogger/) to enable LitLogger, which logs metrics and artifacts automatically to the Lightning Experiments platform.\n"}
+,{"stream_name":"stderr","time":2629.993913103,"data":"`Trainer(limit_val_batches=1.0)` was configured so 100% of the batches will be used..\n"}
+,{"stream_name":"stderr","time":2629.99535269,"data":"LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0,1]\n"}
+,{"stream_name":"stderr","time":2706.614755317,"data":"`Trainer.fit` stopped: `max_steps=1000` reached.\n"}
+,{"stream_name":"stderr","time":2723.81871379,"data":"wandb: \n"}
+,{"stream_name":"stderr","time":2723.81873871,"data":"wandb: Run history:\n"}
+,{"stream_name":"stderr","time":2723.818744146,"data":"wandb:   al/ball_coverage ▁▂▂▃▅█\n"}
+,{"stream_name":"stderr","time":2723.818749426,"data":"wandb:    al/boundary_len ▁▁▂▃▄█\n"}
+,{"stream_name":"stderr","time":2723.818754106,"data":"wandb:         al/dev_ece █▄▃▁▁▁\n"}
+,{"stream_name":"stderr","time":2723.818758893,"data":"wandb:        al/dev_miou ▁▄▆▇██\n"}
+,{"stream_name":"stderr","time":2723.818763466,"data":"wandb: al/kernel_coverage ▁▂▃▄▅█\n"}
+,{"stream_name":"stderr","time":2723.818768103,"data":"wandb:       al/n_labeled ▁▁▂▃▄█\n"}
+,{"stream_name":"stderr","time":2723.818772501,"data":"wandb:       al/n_objects ▁▁▂▃▄█\n"}
+,{"stream_name":"stderr","time":2723.81877724,"data":"wandb:           al/round ▁▂▄▅▇█\n"}
+,{"stream_name":"stderr","time":2723.818806912,"data":"wandb:   al/select_time_s █▁▁▁▁▂\n"}
+,{"stream_name":"stderr","time":2723.818811557,"data":"wandb:      al/total_gain █▁▁▁▁▁\n"}
+,{"stream_name":"stderr","time":2723.818816283,"data":"wandb:                +62 ...\n"}
+,{"stream_name":"stderr","time":2723.818821007,"data":"wandb: \n"}
+,{"stream_name":"stderr","time":2723.81883957,"data":"wandb: Run summary:\n"}
+,{"stream_name":"stderr","time":2723.818844692,"data":"wandb:   al/ball_coverage 0.75\n"}
+,{"stream_name":"stderr","time":2723.818850085,"data":"wandb:    al/boundary_len 1040301\n"}
+,{"stream_name":"stderr","time":2723.818855694,"data":"wandb:         al/dev_ece 0.01526\n"}
+,{"stream_name":"stderr","time":2723.818860968,"data":"wandb:        al/dev_miou 0.81583\n"}
+,{"stream_name":"stderr","time":2723.818865886,"data":"wandb: al/kernel_coverage 0.87758\n"}
+,{"stream_name":"stderr","time":2723.818871075,"data":"wandb:       al/n_labeled 672\n"}
+,{"stream_name":"stderr","time":2723.818887548,"data":"wandb:       al/n_objects 1449\n"}
+,{"stream_name":"stderr","time":2723.818891781,"data":"wandb:           al/round 5\n"}
+,{"stream_name":"stderr","time":2723.81889591,"data":"wandb:   al/select_time_s 0.10191\n"}
+,{"stream_name":"stderr","time":2723.81889973,"data":"wandb:      al/total_gain 37.21741\n"}
+,{"stream_name":"stderr","time":2723.818903632,"data":"wandb:                +64 ...\n"}
+,{"stream_name":"stderr","time":2723.818908155,"data":"wandb: \n"}
+,{"stream_name":"stderr","time":2723.818989525,"data":"wandb: You can sync this run to the cloud by running:\n"}
+,{"stream_name":"stderr","time":2723.818997152,"data":"wandb: wandb sync /kaggle/working/repo/wandb/offline-run-20261115_022456-nokznun7\n"}
+,{"stream_name":"stderr","time":2723.819322877,"data":"wandb: Find logs at: ./wandb/offline-run-20261115_022456-nokznun7/logs\n"}
+,{"stream_name":"stdout","time":2723.881034036,"data":"[al] maxherding-sx2-dinov3-s0: pool=1264 sigma=0.8204 delta=0.2280\n"}
+,{"stream_name":"stdout","time":2723.881055674,"data":"[al] maxherding-sx2-dinov3-s0 round 0: n=21 val_miou=0.4097 dev_miou=0.3837 select=0.7s train=81.3s\n"}
+,{"stream_name":"stdout","time":2723.881060748,"data":"[al] maxherding-sx2-dinov3-s0 round 1: n=42 val_miou=0.6038 dev_miou=0.5986 select=0.0s train=95.7s\n"}
+,{"stream_name":"stdout","time":2723.881064538,"data":"[al] maxherding-sx2-dinov3-s0 round 2: n=84 val_miou=0.7026 dev_miou=0.7124 select=0.0s train=76.6s\n"}
+,{"stream_name":"stdout","time":2723.881068713,"data":"[al] maxherding-sx2-dinov3-s0 round 3: n=168 val_miou=0.7725 dev_miou=0.7796 select=0.0s train=77.0s\n"}
+,{"stream_name":"stdout","time":2723.881072689,"data":"[al] maxherding-sx2-dinov3-s0 round 4: n=336 val_miou=0.8099 dev_miou=0.8059 select=0.1s train=76.9s\n"}
+,{"stream_name":"stdout","time":2723.881076295,"data":"[al] maxherding-sx2-dinov3-s0 round 5: n=672 val_miou=0.8305 dev_miou=0.8158 select=0.1s train=76.7s\n"}
+,{"stream_name":"stdout","time":2725.85292915,"data":"[kaggle] ENCODERS=dinov3 bash scripts/part3.sh encoders.dinov3.name=${DINOV3_DIR:?DINOv3 weights dataset not attached}: exit code 0\n"}
+,{"stream_name":"stdout","time":2727.899605234,"data":"[report] 4 encoder x method rows -\u003e outputs/report\n"}
+,{"stream_name":"stdout","time":2727.899632135,"data":"| encoder | method | mIoU@21 | mIoU@42 | mIoU@84 | mIoU@168 | mIoU@336 | mIoU@672 | AUBC | AUBC_lin |\n"}
+,{"stream_name":"stdout","time":2727.899640422,"data":"|---|---|---|---|---|---|---|---|---|---|\n"}
+,{"stream_name":"stdout","time":2727.899644864,"data":"| dinov3 | maxherding | 0.4086 | 0.6197 | 0.7023 | 0.7705 | 0.8112 | 0.8305 | 0.7047 | 0.782 |\n"}
+,{"stream_name":"stdout","time":2727.899649272,"data":"| dinov3 | maxherding-sx0.5 | 0.3699 | 0.5654 | 0.7163 | 0.7854 | 0.8193 | 0.8347 | 0.6977 | 0.7872 |\n"}
+,{"stream_name":"stdout","time":2727.899653715,"data":"| dinov3 | maxherding-sx2 | 0.4097 | 0.6038 | 0.7026 | 0.7725 | 0.8099 | 0.8305 | 0.7018 | 0.7812 |\n"}
+,{"stream_name":"stdout","time":2727.899658373,"data":"| dinov3 | probcover | 0.3107 | 0.4998 | 0.6411 | 0.7638 | 0.7947 | 0.8452 | 0.6555 | 0.7648 |\n"}
+,{"stream_name":"stdout","time":2728.050567032,"data":"[kaggle] python -m src.report: exit code 0\n"}
+,{"stream_name":"stderr","time":2730.071687858,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":2730.071736048,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":2730.29846924,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":2730.298524863,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":2731.119748812,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":2732.430409242,"data":"[NbConvertApp] Writing 286728 bytes to __results__.html\n"}
+]

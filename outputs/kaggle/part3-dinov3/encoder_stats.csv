@@ -1,0 +1,2 @@
+encoder,model,params_m,extract_time_s,images_per_s,peak_mem_mb,gpu
+dinov3,/kaggle/input/dinov3-vitb16-weights,85.660416,92.9,31.36,1058.291015625,Tesla T4
