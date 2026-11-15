@@ -68,6 +68,14 @@ KERNEL=al-seg-voc-baselines bash kaggle/push.sh "ENCODERS=mae bash scripts/part1
 uvx --with six kaggle kernels status <user>/al-seg-voc
 uvx --with six kaggle kernels output <user>/al-seg-voc -p build/kaggle_out
 ```
+Kaggle secrets do not reach API-pushed kernels, so DINOv3 (gated) comes as a private dataset of its HF weights,
+downloaded once locally with your own token (`build/dinov3_weights/`, with its LICENSE), and the kernel passes the
+folder it finds as `encoders.dinov3.name`:
+```
+uvx --with six kaggle datasets create -p build/dinov3_weights --dir-mode zip
+EXTRA_DATASETS=dinov3-vitb16-weights KERNEL=al-seg-voc-dinov3 bash kaggle/push.sh \
+  'ENCODERS=dinov3 bash scripts/part3.sh encoders.dinov3.name=${DINOV3_DIR:?}' "python -m src.report"
+```
 `selector_stats.csv` also holds two label-free coverage metrics for every method, with the same median sigma and
 ProbCover delta for all: generalized (Gaussian) coverage and P(C(L, delta)).
 

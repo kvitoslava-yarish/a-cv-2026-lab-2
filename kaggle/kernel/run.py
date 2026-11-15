@@ -6,6 +6,7 @@ Secrets (attach them to the kernel once in the Kaggle editor: Add-ons -> Secrets
   HF_TOKEN       required for DINOv3 (gated on Hugging Face)
   WANDB_API_KEY  optional; without it W&B logs offline into repo/wandb/
 """
+import json
 import os
 import shutil
 import subprocess
@@ -30,6 +31,17 @@ def find_bundle():
     raise FileNotFoundError("al-seg-voc-bundle not found under /kaggle/input")
 
 
+def find_hf_weights():
+    """Hugging Face model folders attached as datasets (config.json + model.safetensors), by model_type.
+    Secrets do not reach API-pushed kernels, so gated weights (DINOv3) come as a private dataset instead of HF_TOKEN."""
+    found = {}
+    for dirpath, _, files in os.walk(INPUT, followlinks=True):
+        if "config.json" in files and "model.safetensors" in files:
+            model_type = json.loads((Path(dirpath) / "config.json").read_text()).get("model_type", "")
+            found.setdefault(model_type, dirpath)
+    return found
+
+
 BUNDLE = find_bundle()
 REPO = Path("/kaggle/working/repo")
 print(f"[kaggle] code bundle: {BUNDLE}", flush=True)
@@ -37,6 +49,10 @@ shutil.copytree(BUNDLE, REPO, dirs_exist_ok=True)
 
 subprocess.run([sys.executable, "-m", "pip", "install", "-q", "-r", str(REPO / "requirements.txt")], check=True)
 env = dict(os.environ)
+weights = find_hf_weights()
+print(f"[kaggle] attached HF weights: {weights}", flush=True)
+for model_type, path in weights.items():  # e.g. DINOV3_DIR for encoders.dinov3.name=$DINOV3_DIR
+    env[f"{model_type.split('_')[0].upper()}_DIR"] = path
 try:
     from kaggle_secrets import UserSecretsClient
 
