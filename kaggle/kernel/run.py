@@ -15,7 +15,21 @@ from pathlib import Path
 COMMANDS = []
 
 INPUT = Path("/kaggle/input")
-BUNDLE = next(INPUT.rglob("repo/src/al_loop.py")).parents[2]  # located by content: input layouts differ
+
+
+def find_bundle():
+    """Located by content: input layouts differ. os.walk with followlinks, because inputs are mounted via symlinks
+    and Path.rglob stopped following them in Python 3.13."""
+    for dirpath, _, files in os.walk(INPUT, followlinks=True):
+        if "al_loop.py" in files and Path(dirpath).match("repo/src"):
+            return Path(dirpath).parents[1]
+    for dirpath, dirs, files in os.walk(INPUT, followlinks=True):  # diagnostics for the log
+        if dirpath.count(os.sep) - str(INPUT).count(os.sep) < 4:
+            print(dirpath, sorted(dirs)[:10], sorted(files)[:10])
+    raise FileNotFoundError("al-seg-voc-bundle not found under /kaggle/input")
+
+
+BUNDLE = find_bundle()
 REPO = Path("/kaggle/working/repo")
 shutil.copytree(BUNDLE / "repo", REPO, dirs_exist_ok=True)
 
