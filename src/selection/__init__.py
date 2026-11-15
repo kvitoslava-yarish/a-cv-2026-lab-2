@@ -23,14 +23,16 @@ class SelectionState:
 def maxherding(state, labeled_idx, candidate_idx, B):
     dev = "cuda" if torch.cuda.is_available() else "cpu"
     batch, gains = select_maxherding(state.x, labeled_idx, candidate_idx, B, state.sigma, device=dev)
-    return batch, {"gains": gains}
+    return batch, {"gains": gains, "batch_scores": gains}
 
 
 def uncertainty(state, labeled_idx, candidate_idx, B):
     scorer = state.cfg["al"]["scorer"]
     heads = [state.model] if scorer == "ripu" else bootstrap_heads(state, labeled_idx)
     scores = image_scores(heads, state.feats, state.pool_rows[candidate_idx], state.cfg, scorer)
-    return select_topb(scores, candidate_idx, B), {"scores": scores}
+    batch = select_topb(scores, candidate_idx, B)
+    score_of = dict(zip(candidate_idx.tolist(), scores.tolist()))
+    return batch, {"scores": scores, "batch_scores": [score_of[c] for c in batch]}
 
 
 SELECTORS = {"maxherding": maxherding, "uncertainty": uncertainty}

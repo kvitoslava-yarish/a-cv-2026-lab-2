@@ -46,7 +46,7 @@ def bootstrap_heads(state, labeled_idx):
     heads = []
     for k in range(state.cfg["al"]["bald_heads"]):
         pick = rng.integers(0, len(rows), len(rows))
-        head, _ = train_head(state.feats, state.labeled_masks[pick], rows[pick], state.cfg, seed=state.seed + 1000 + k)
+        head, _, _ = train_head(state.feats, state.labeled_masks[pick], rows[pick], state.cfg, seed=state.seed + 1000 + k)
         heads.append(head)
     return heads
 

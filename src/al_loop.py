@@ -11,7 +11,8 @@ from .data import find_voc_root, load_masks, load_splits, rows_of
 from .oracle import Oracle
 from .selection import SELECTORS, SelectionState, check_batch, maxherding
 from .selection.herding import median_sigma
-from .tracking import append_result, define_prefix, init_run, iou_bar, per_class, save_head
+from .tracking import (append_result, class_counts, define_prefix, init_run, iou_bar, per_class, save_head,
+                       selection_table)
 from .train import evaluate, gpu_info, train_head
 
 
@@ -48,6 +49,9 @@ def run_al(cfg):
     run.summary["sigma"] = sigma
     state = SelectionState(cfg=cfg, seed=seed, x=data["vec"], sigma=sigma, feats=data["train"], pool_rows=pool_rows)
 
+    plots = out / "plots"
+    plots.mkdir(parents=True, exist_ok=True)
+    pool_masks = data["masks448"][pool_rows]
     labeled, masks, selections = [], [], []
     for r, B in enumerate(al["budgets"]):
         candidates = np.setdiff1d(np.arange(len(pool_ids)), labeled)
@@ -66,8 +70,10 @@ def run_al(cfg):
 
         prefix = f"r{r}/"
         define_prefix(run, prefix)
-        curves = {"dev": (data["train"], dev_rows, dev_masks)}
-        head, train_time = train_head(data["train"], state.labeled_masks, pool_rows[labeled], cfg, seed, run, prefix, curves)
+        curves = {"dev": (data["train"], dev_rows, dev_masks), "val": (data["val"], val_rows, val_masks)}
+        head, train_time, history = train_head(data["train"], state.labeled_masks, pool_rows[labeled], cfg, seed, run,
+                                               prefix, curves)
+        best = max(history, key=lambda h: h["dev"])
         state.model = head
         val = evaluate(head, data["val"], val_rows, val_masks, cfg)
         dev = evaluate(head, data["train"], dev_rows, dev_masks, cfg)
@@ -81,15 +87,24 @@ def run_al(cfg):
             "per_class_iou": val["per_class_iou"], "n_objects_selected": n_obj, "boundary_len_selected": boundary,
             "select_time_s": round(select_time, 2), "train_time_s": round(train_time, 1), "sigma": sigma,
             "tau": "", "seed": seed, "gpu": gpu, "peak_mem_mb": round(peak, 1),
+            "best_dev_step": best["step"], "best_dev_miou": best["dev"], "val_miou_at_best_dev": best["val"],
         }
         append_result(cfg, row)
         log = {
             "al/n_labeled": len(labeled), "al/round": r, "al/val_miou": val["miou"], "al/val_ece": val["ece"],
             "al/dev_miou": dev["miou"], "al/dev_ece": dev["ece"], "al/n_objects": n_obj, "al/boundary_len": boundary,
             "al/select_time_s": select_time, "al/train_time_s": train_time,
+            "al/best_dev_step": best["step"], "al/best_dev_miou": best["dev"],
+            "al/val_miou_at_best_dev": best["val"],
         }
         log.update(per_class("al/val_iou", val["per_class_iou"]))
         log[f"plots/val_iou_r{r}"] = iou_bar(val["per_class_iou"], f"{name} r{r} (n={len(labeled)}): val IoU per class")
+        log.update(class_counts("al/L_images", state.labeled_masks))
+        log.update(class_counts("al/batch_images", masks[-1]))
+        log[f"selected/r{r}"] = selection_table(root, batch_ids, masks[-1], info["batch_scores"])
+        dist = class_distribution(masks[-1], pool_masks, plots / f"classes_{name}_r{r}.png",
+                                  f"{name} r{r}: batch of {B} vs pool")
+        log[f"plots/classes_r{r}"] = wandb.Image(str(dist))
         if "gains" in info:
             log["al/total_gain"] = sum(info["gains"])
             log["al/gain_per_pick"] = wandb.Histogram(info["gains"])
@@ -101,14 +116,9 @@ def run_al(cfg):
 
     (out / "selections").mkdir(parents=True, exist_ok=True)
     (out / "selections" / f"{name}.json").write_text(json.dumps(selections))
-    plots = out / "plots"
-    plots.mkdir(parents=True, exist_ok=True)
-    pool_masks = data["masks448"][pool_rows]
     grid = thumbnail_grid(root, selections[0], plots / f"first_batch_{name}.png")
-    first = class_distribution(masks[0], pool_masks, plots / f"classes_first_{name}.png", f"{name}: first batch vs pool")
     final = class_distribution(state.labeled_masks, pool_masks, plots / f"classes_final_{name}.png", f"{name}: L vs pool")
-    run.log({"plots/first_batch": wandb.Image(str(grid)), "plots/classes_first": wandb.Image(str(first)),
-             "plots/classes_final": wandb.Image(str(final))})
+    run.log({"plots/first_batch": wandb.Image(str(grid)), "plots/classes_final": wandb.Image(str(final))})
     assert sum(len(q) for q in oracle.log) == len(labeled)
     run.finish()
 

@@ -26,3 +26,4 @@ def test_head_shapes():
     head = SegHead(n_layers=2, dim=32, hidden=16)
     out = head(torch.randn(3, 2, 32, 28, 28), size=(448, 448))
     assert out.shape == (3, 21, 448, 448)
+
