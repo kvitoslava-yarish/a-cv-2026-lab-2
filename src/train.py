@@ -53,6 +53,7 @@ class LitSeg(pl.LightningModule):
         super().__init__()
         t = cfg["train"]
         self.t, self.prefix, self.curve_names = t, prefix, list(curve_names)
+        self.history = []
         self.num_classes = cfg["num_classes"]
         self.head = SegHead(n_layers, dim, t["hidden"], cfg["num_classes"], t["dropout"])
 
@@ -75,10 +76,13 @@ class LitSeg(pl.LightningModule):
             self.meters[dataloader_idx].update(probs, m.to(self.device))
 
     def on_validation_epoch_end(self):
+        point = {"step": self.global_step}
         for name, meter in zip(self.curve_names, self.meters):
             res = meter.compute()
+            point[name] = res["miou"]
             for k in ("miou", "ece", "loss", "pixel_acc"):
                 self.log(f"{self.prefix}{name}/{k}", res[k], add_dataloader_idx=False)
+        self.history.append(point)
 
     def configure_optimizers(self):
         opt = torch.optim.AdamW(self.head.parameters(), lr=self.t["lr"], weight_decay=self.t["weight_decay"])
@@ -118,11 +122,13 @@ def gpu_info():
 
 
 def train_head(feats, masks, rows, cfg, seed, run=None, prefix="", curves=None):
-    """Train a fresh head on feats[rows] with masks aligned to rows. curves: {name: (feats, rows, masks)} logged only."""
+    """Train a fresh head on feats[rows] with masks aligned to rows.
+    curves: {name: (feats, rows, masks)} evaluated every `curve_every` steps; returns (head, seconds, history)."""
     t = cfg["train"]
     pl.seed_everything(seed, workers=True, verbose=False)
+    steps, every = t["max_steps"], min(t["curve_every"], t["max_steps"])
     train_set = TrainSet(feats, masks, rows)
-    sampler = RandomSampler(train_set, replacement=True, num_samples=t["max_steps"] * t["batch_size"])
+    sampler = RandomSampler(train_set, replacement=True, num_samples=steps * t["batch_size"])
     train_loader = DataLoader(train_set, batch_size=t["batch_size"], sampler=sampler)
     curves = curves or {}
     val_loaders = [
@@ -131,11 +137,11 @@ def train_head(feats, masks, rows, cfg, seed, run=None, prefix="", curves=None):
     model = LitSeg(cfg, n_layers=feats.shape[1], dim=feats.shape[2], curve_names=curves, prefix=prefix)
     logger = WandbLogger(experiment=run) if run is not None else False
     trainer = pl.Trainer(
-        max_steps=t["max_steps"],
+        max_steps=steps,
         precision=t["precision"] if torch.cuda.is_available() else "32-true",
         logger=logger,
-        callbacks=[WeightHistograms(t["hist_every"])] if run is not None else [],
-        val_check_interval=min(t["curve_every"], t["max_steps"]) if val_loaders else None,
+        callbacks=[WeightHistograms(every)] if run is not None else [],
+        val_check_interval=every if val_loaders else None,
         limit_val_batches=1.0 if val_loaders else 0,
         num_sanity_val_steps=0,
         log_every_n_steps=10,
@@ -150,7 +156,7 @@ def train_head(feats, masks, rows, cfg, seed, run=None, prefix="", curves=None):
     t0 = time.time()
     trainer.fit(model, train_loader, val_loaders or None)
     head = model.head.to(device()).eval()
-    return head, time.time() - t0
+    return head, time.time() - t0, model.history
 
 
 @torch.no_grad()

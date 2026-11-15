@@ -21,7 +21,7 @@ def main():
     run = init_run(cfg, name, group="full")
     define_prefix(run, "full/")
     curves = {"val": (data["val"], val_rows, val_masks)}
-    head, train_time = train_head(data["train"], data["masks448"], train_rows, cfg, seed, run, "full/", curves)
+    head, train_time, _ = train_head(data["train"], data["masks448"], train_rows, cfg, seed, run, "full/", curves)
     val = evaluate(head, data["val"], val_rows, val_masks, cfg)
     gpu, peak = gpu_info()
     save_head(cfg, run, head, f"head-{name}")

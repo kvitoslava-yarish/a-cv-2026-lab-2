@@ -27,8 +27,7 @@ train:
   hidden: 256
   dropout: 0.1
   precision: 16-mixed
-  curve_every: 200
-  hist_every: 200
+  curve_every: 100
   eval_batch_size: 16
 
 al:
