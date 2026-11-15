@@ -1,0 +1,2 @@
+encoder,model,params_m,extract_time_s,images_per_s,peak_mem_mb,gpu
+mae,vit_base_patch16_224.mae,85.798656,103.7,28.1,705.5615234375,Tesla T4
